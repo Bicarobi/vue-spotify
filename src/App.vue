@@ -1,6 +1,5 @@
 <template>
-	<router-link to="/">Home</router-link> |
-	<router-view />
+	<router-view @reload-player="loadPlayer" />
 	<PlayerBar />
 </template>
 
@@ -29,6 +28,25 @@ export default {
 		window.onresize = () => {
 			this.$myGlobalVariable.windowWidth = window.innerWidth;
 		};
+	},
+	methods: {
+		loadPlayer() {
+			window.onSpotifyIframeApiReady = (IFrameAPI) => {
+				const element = document.getElementById("spotify-iframe");
+				const options = {
+					height: 100,
+					uri: this.spotifyId,
+				};
+				const callback = (EmbedController) => {
+					document.querySelectorAll(".uri").forEach((song) => {
+						song.addEventListener("click", () => {
+							EmbedController.loadUri(song.dataset.uri);
+						});
+					});
+				};
+				IFrameAPI.createController(element, options, callback);
+			};
+		},
 	},
 };
 </script>

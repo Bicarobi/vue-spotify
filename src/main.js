@@ -10,6 +10,7 @@ const app = createApp(App);
 app.config.globalProperties.$myGlobalVariable = reactive({
 	windowWidth: null,
 	mobileWindowWidth: 700,
+	accessToken: "",
 });
 
 app.use(router).use(LoadScript).mount("#app");
