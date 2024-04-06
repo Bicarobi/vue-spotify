@@ -1,12 +1,17 @@
 <template>
-	<div class="home">
-		<button class="uri" v-for="track in allTopTracks" :key="track.id" :data-uri="track.uri">{{ track.name }}</button>
+	<div class="tracks-container">
+		<div class="track-cards-container">
+			<TrackCard v-for="track in allTopTracks" :key="track.id" :uri="track.uri" :track="track.name" :artist="track.artists.name" :album="track.album.name" />
+		</div>
 	</div>
 </template>
 
 <script>
+import TrackCard from "../components/TrackCard.vue";
+
 export default {
-	name: "HomeView",
+	name: "TracksView",
+	components: { TrackCard },
 	data() {
 		return {
 			allTopTracks: [],
@@ -47,7 +52,9 @@ export default {
 		},
 		async fetchAllTopTracksByMonth(month, year, token) {
 			let allTracks = [];
-			let nextUrl = `https://api.spotify.com/v1/artists/0XNa1vTidXlvJ2gHSsRi4A/top-tracks?&offset=20&limit=10`;
+			let nextUrl = `https://api.spotify.com/v1/search?q=twenty&type=track&&offset=20&limit=10`;
+
+			//api.spotify.com/v1/search?q=remaster%2520track%3ADoxy%2520artist%3AMiles%2520Davis&type=album
 
 			while (nextUrl) {
 				const response = await fetch(nextUrl, {
@@ -57,7 +64,8 @@ export default {
 				});
 				const data = await response.json();
 				console.log(data);
-				allTracks = allTracks.concat(data.tracks);
+				allTracks = allTracks.concat(data.tracks.items);
+				console.log(allTracks);
 				nextUrl = data.next;
 			}
 

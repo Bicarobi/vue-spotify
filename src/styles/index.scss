@@ -10,7 +10,10 @@ $desktop: "(min-width: 1201px)";
 
 @import "./App";
 
+@import "./views/TracksView.scss";
+
 @import "./components/PlayerBar.scss";
+@import "./components/TrackCard.scss";
 
 [data-theme="light"] {
 	--color1: #{$gray1};
