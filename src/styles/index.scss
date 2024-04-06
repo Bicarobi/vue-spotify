@@ -1,0 +1,71 @@
+$white1: #fff;
+
+$gray1: #292929;
+
+$mobile: "(max-width: 700px)";
+$tablet: "(max-width: 1200px)";
+$desktop: "(min-width: 1201px)";
+
+@import "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap";
+
+@import "./App";
+
+@import "./components/PlayerBar.scss";
+
+[data-theme="light"] {
+	--color1: #{$gray1};
+}
+
+[data-theme="dark"] {
+	--color1: #{$white1};
+}
+
+@media #{$mobile} {
+}
+
+body {
+	margin: 0;
+}
+
+html {
+	overflow-y: scroll;
+	height: fit-content;
+}
+
+html,
+body {
+	box-sizing: border-box;
+	height: 100%;
+	width: 100%;
+}
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+	transition: 0.3s;
+}
+
+#app {
+	/* 	font-family: Avenir, Helvetica, Arial, sans-serif; */
+	font-family: Roboto, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+//SCROLLBAR
+
+/*::-webkit-scrollbar {
+	width: 10px;
+
+	@media #{$mobile} {
+		display: none;
+	}
+}
+
+::-webkit-scrollbar-track {
+	background: var(--color6);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--color9);
+}*/
