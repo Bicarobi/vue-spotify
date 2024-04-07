@@ -1,6 +1,8 @@
 $white1: #fff;
 
 $gray1: #292929;
+$gray2: #232323;
+$gray3: #313131;
 
 $mobile: "(max-width: 700px)";
 $tablet: "(max-width: 1200px)";
@@ -12,22 +14,17 @@ $desktop: "(min-width: 1201px)";
 
 @import "./views/TracksView.scss";
 
+@import "./components/NavBar.scss";
 @import "./components/PlayerBar.scss";
 @import "./components/TrackCard.scss";
-
-[data-theme="light"] {
-	--color1: #{$gray1};
-}
-
-[data-theme="dark"] {
-	--color1: #{$white1};
-}
 
 @media #{$mobile} {
 }
 
 body {
 	margin: 0;
+
+	background-color: $gray2;
 }
 
 html {

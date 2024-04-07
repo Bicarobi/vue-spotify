@@ -11,12 +11,12 @@
 	padding: 0 5px;
 
 	@media #{$tablet} {
-		bottom: 10px;
+		bottom: 5px;
 		left: 50%;
 
 		transform: translate(-50%, 0);
 
-		max-width: 80%;
+		max-width: calc(100% - 190px);
 		height: 80px;
 
 		padding: 0 5px;

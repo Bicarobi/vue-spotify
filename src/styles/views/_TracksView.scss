@@ -1,6 +1,41 @@
 .tracks-container {
-	padding: 100px 200px 0 200px;
+	padding: 75px 200px 125px 200px;
+
+	@media #{$tablet} {
+		padding: 75px 100px 125px 100px;
+	}
+
+	@media #{$mobile} {
+		padding: 75px 20px 125px 20px;
+	}
 
 	> .track-cards-container {
+		display: grid;
+		overflow: hidden;
+		grid-template-columns: repeat(5, 1fr);
+		grid-auto-rows: 1fr;
+		grid-row-gap: 5px;
+		gap: 20px;
+
+		@media #{$tablet} {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 10px;
+		}
+
+		@media #{$mobile} {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 10px;
+		}
+	}
+
+	> .more-container {
+		margin-top: 30px;
+
+		> .load-more {
+			border: none;
+			border-radius: 30px;
+			padding: 5px 10px;
+			background-color: white;
+		}
 	}
 }
