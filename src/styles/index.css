@@ -56,17 +56,23 @@
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 10px;
 }
 .nav-bar-container > .content > input {
-  width: 75%;
+  width: 100%;
+  max-width: 500px;
   border: none;
   border-radius: 30px;
   padding: 10px 15px;
   background-color: #313131;
   font-size: 16px;
   color: #fff;
+}
+@media (max-width: 700px) {
+  .nav-bar-container > .content > input {
+    max-width: 100%;
+  }
 }
 .nav-bar-container > .content > button {
   border: none;

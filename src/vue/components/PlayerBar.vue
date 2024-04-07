@@ -7,8 +7,8 @@
 <script>
 export default {
 	name: "PlayerBar",
-	mounted() {
+	/* mounted() {
 		this.$emit("reload-player");
-	},
+	}, */
 };
 </script>

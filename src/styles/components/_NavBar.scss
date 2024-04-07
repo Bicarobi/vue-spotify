@@ -22,12 +22,12 @@
 
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		justify-content: center;
 		gap: 10px;
 
 		> input {
-			width: 75%;
-
+			width: 100%;
+			max-width: 500px;
 			border: none;
 			border-radius: 30px;
 			padding: 10px 15px;
@@ -35,6 +35,10 @@
 
 			font-size: 16px;
 			color: $white1;
+
+			@media #{$mobile} {
+				max-width: 100%;
+			}
 		}
 
 		> button {

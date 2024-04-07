@@ -18,10 +18,17 @@ export default {
 	components: { TrackCard },
 	props: ["allTopTracks"],
 	updated() {
-		console.log(this.allTopTracks.length);
 		if (this.allTopTracks.length) {
-			this.$emit("reload-player");
+			if (this.allTopTracks.length % 10 == 0) {
+				this.$emit("reload-player");
+			}
 		}
+	},
+	watch: {
+		allTopTracks: {
+			immediate: true,
+			deep: true,
+		},
 	},
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
 	<NavBar @search-tracks="fetchTracks" />
 	<router-view @reload-player="loadPlayer" @load-more="loadMore" :allTopTracks="this.allTopTracks" />
-	<PlayerBar />
+	<PlayerBar @reload-player="loadPlayer" />
 </template>
 
 <script>
@@ -39,6 +39,17 @@ export default {
 	},
 	methods: {
 		loadPlayer() {
+			var oldPlayer = document.getElementById("spotify-iframe");
+			if (!oldPlayer) {
+				var parent = document.querySelector(".player-bar-container");
+				parent.textContent = "";
+
+				var newPlayer = document.createElement("div");
+				newPlayer.id = "spotify-iframe";
+
+				parent.appendChild(newPlayer);
+			}
+
 			window.onSpotifyIframeApiReady = (IFrameAPI) => {
 				const element = document.getElementById("spotify-iframe");
 				const options = {
@@ -47,7 +58,6 @@ export default {
 				};
 				const callback = (EmbedController) => {
 					document.querySelectorAll(".load-track").forEach((song) => {
-						console.log(song);
 						song.addEventListener("click", () => {
 							EmbedController.loadUri(song.dataset.uri);
 						});
@@ -101,6 +111,16 @@ export default {
 				console.log(allTracks);
 				nextUrl = data.next;
 			}
+
+			/* const response = await fetch(nextUrl, {
+				headers: {
+					Authorization: "Bearer " + this.$myGlobalVariable.accessToken,
+				},
+			});
+			const data = await response.json();
+			console.log(data);
+			allTracks = allTracks.concat(data.tracks.items);
+			console.log(allTracks); */
 
 			this.allTopTracks = allTracks;
 		},
