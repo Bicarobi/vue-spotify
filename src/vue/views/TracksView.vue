@@ -5,7 +5,8 @@
 		</div>
 		<div v-else>Loading tracks...</div>
 		<div class="more-container">
-			<button class="load-more" @click="this.$emit('load-more')">Load More</button>
+			<button class="load-more" @click="this.$emit('load-more', -10)">Load Previous</button>
+			<button class="load-more" @click="this.$emit('load-more', 10)">Load Next</button>
 		</div>
 	</div>
 </template>

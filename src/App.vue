@@ -57,7 +57,7 @@ export default {
 					uri: this.spotifyId,
 				};
 				const callback = (EmbedController) => {
-					document.querySelectorAll(".load-track").forEach((song) => {
+					document.querySelectorAll(".track-card-container").forEach((song) => {
 						song.addEventListener("click", () => {
 							EmbedController.loadUri(song.dataset.uri);
 						});
@@ -124,8 +124,11 @@ export default {
 
 			this.allTopTracks = allTracks;
 		},
-		async loadMore() {
-			this.offSet += 10;
+		async loadMore(amount) {
+			this.offSet += amount;
+			if (this.offSet < 0) {
+				this.offSet = 0;
+			}
 			this.fetchTracks(this.search, this.offSet);
 		},
 	},
