@@ -2,9 +2,12 @@
 	<div class="track-card-container" :data-uri="uri">
 		<img :src="img" />
 		<div class="content">
-			<div class="artist">{{ artist }}</div>
 			<div class="track">{{ track }}</div>
-			<div class="album">{{ album }}</div>
+			<!-- <div class="album-container">
+				Album
+				<div class="album">{{ album }}</div>
+			</div> -->
+			<div class="artist">{{ artist }}</div>
 		</div>
 		<!-- <PlayIcon class="load-track" :data-uri="uri" /> -->
 		<!-- <button class="load-track" :data-uri="uri">Play</button> -->

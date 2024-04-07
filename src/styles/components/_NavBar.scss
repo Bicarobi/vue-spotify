@@ -43,6 +43,10 @@
 			}
 		}
 
+		> input:hover {
+			background-color: $gray4;
+		}
+
 		> button {
 			border: none;
 			border-radius: 30px;
@@ -51,6 +55,12 @@
 
 			font-size: 16px;
 			color: $white1;
+
+			cursor: pointer;
+		}
+
+		> button:hover {
+			background-color: $gray4;
 		}
 	}
 }

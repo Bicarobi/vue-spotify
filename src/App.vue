@@ -15,7 +15,7 @@ export default {
 		return {
 			spotifyId: "https://open.spotify.com/track/6QKplS12OIhLVzbfCOLesv?si=e657681d587e4569",
 			allTopTracks: [],
-			search: "Judas Priest",
+			search: "",
 			offSet: 0,
 		};
 	},
@@ -54,7 +54,6 @@ export default {
 				const element = document.getElementById("spotify-iframe");
 				const options = {
 					height: 100,
-					uri: this.spotifyId,
 				};
 				const callback = (EmbedController) => {
 					document.querySelectorAll(".track-card-container").forEach((song) => {
@@ -95,7 +94,12 @@ export default {
 			this.search = search;
 			this.offSet = offSet;
 			let allTracks = [];
-			let nextUrl = `https://api.spotify.com/v1/search?q=${search}&type=track&&offset=${offSet}&limit=10`;
+			let nextUrl;
+			if (search) {
+				nextUrl = `https://api.spotify.com/v1/search?q=${search}&type=track&&offset=${offSet}&limit=10`;
+			} else {
+				nextUrl = `https://api.spotify.com/v1/recommendations?seed_artists=4NHQUGzhtTLFvgF5SZesLK&seed_genres=classical%2Ccountry&seed_tracks=0c6xIDDpzE81m2q797ordA&&offset=${offSet}&limit=10`;
+			}
 
 			//api.spotify.com/v1/search?q=remaster%2520track%3ADoxy%2520artist%3AMiles%2520Davis&type=album
 
@@ -107,7 +111,12 @@ export default {
 				});
 				const data = await response.json();
 				console.log(data);
-				allTracks = allTracks.concat(data.tracks.items);
+				if (search) {
+					allTracks = allTracks.concat(data.tracks.items);
+				} else {
+					allTracks = allTracks.concat(data.tracks);
+				}
+
 				console.log(allTracks);
 				nextUrl = data.next;
 			}
